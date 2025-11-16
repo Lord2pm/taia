@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-import google.generativeai as genai
 import os
+
+import google.generativeai as genai
 from rich.console import Console
 from rich.markdown import Markdown
 
@@ -10,7 +11,9 @@ console = Console()
 # Lê a chave da variável de ambiente
 api_key = os.getenv("GEMINI_API_KEY")
 if not api_key:
-    console.print("[bold red]❌ Erro:[/bold red] variável de ambiente GEMINI_API_KEY não configurada.")
+    console.print(
+        "[bold red]❌ Erro:[/bold red] variável de ambiente GEMINI_API_KEY não configurada."
+    )
     console.print("Use: export GEMINI_API_KEY='SUA_CHAVE_AQUI'")
     exit(1)
 
@@ -20,7 +23,9 @@ model = genai.GenerativeModel("gemini-2.5-flash")
 # Histórico de conversa
 chat = model.start_chat(history=[])
 
-console.print("[bold cyan]🤖 Gemini Chat Iniciado![/bold cyan] (digite 'sair' para encerrar)\n")
+console.print(
+    "[bold cyan]🤖 Gemini Chat Iniciado![/bold cyan] (digite 'sair' para encerrar)\n"
+)
 
 while True:
     user_input = console.input("[bold yellow]👤 Tu:[/bold yellow] ").strip()
