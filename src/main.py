@@ -1,15 +1,19 @@
 #!/usr/bin/env python3
 import os
 
+from dotenv import load_dotenv
 import google.generativeai as genai
 from rich.console import Console
 from rich.markdown import Markdown
+
+load_dotenv()
 
 # Inicializa console colorido
 console = Console()
 
 # Lê a chave da variável de ambiente
 api_key = os.getenv("GEMINI_API_KEY")
+
 if not api_key:
     console.print(
         "[bold red]❌ Erro:[/bold red] variável de ambiente GEMINI_API_KEY não configurada."
